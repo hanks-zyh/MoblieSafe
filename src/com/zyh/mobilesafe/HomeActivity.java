@@ -21,6 +21,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.zyh.mobilesafe.utils.MD5Utils;
+
 public class HomeActivity extends Activity {
 
 	private GridView gridView;
@@ -103,7 +105,7 @@ public class HomeActivity extends Activity {
 				if (password.equals(password_confirm)) {
 					// 一致，取消对话框，保存密码，进入手机防盗界面
 					Editor editor = sp.edit();
-					editor.putString("password", password);
+					editor.putString("password", MD5Utils.getMd5String(password));
 					editor.commit();
 					dialog.dismiss();
 				} else {
@@ -113,8 +115,10 @@ public class HomeActivity extends Activity {
 				}
 			}
 		});
-		builder.setView(view);
-		dialog = builder.show();
+
+		dialog = builder.create();
+		dialog.setView(view, 0, 0, 0, 0);
+		dialog.show();
 	}
 
 	/**
@@ -145,7 +149,7 @@ public class HomeActivity extends Activity {
 				}
 				String savepassword = sp.getString("password", "");
 				// 判断是否一致
-				if (password.equals(savepassword)) {
+				if (savepassword.equals(MD5Utils.getMd5String(password))) {
 					// 一致，取消对话框 ，进入手机防盗界面
 					dialog.dismiss();
 				} else {
@@ -155,8 +159,9 @@ public class HomeActivity extends Activity {
 				}
 			}
 		});
-		builder.setView(view);
-		dialog = builder.show();
+		dialog = builder.create();
+		dialog.setView(view, 0, 0, 0, 0);
+		dialog.show();
 	}
 
 	/**
