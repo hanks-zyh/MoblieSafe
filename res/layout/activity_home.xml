@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="50dip"
+        android:background="#8866ff00"
+        android:gravity="center"
+        android:text="安全卫士"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <com.zyh.mobilesafe.ui.FocusedTextView
+        android:focusableInTouchMode="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:gravity="center"
+        android:text="我是黑马小护卫。我时刻保护您的移动手机安全。不拉不拉。。嘎嘎。。"
+        android:textColor="#006600"
+        android:textSize="22sp" />
+
+    <GridView
+        android:id="@+id/gv_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dip"
+        android:numColumns="3"
+        android:verticalSpacing="8dip" >
+    </GridView>
+
+</LinearLayout>
