@@ -31,7 +31,6 @@ public class UpdateService extends Service {
 		notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 		notification = new Notification();
 		notification.flags |= Notification.FLAG_AUTO_CANCEL;
-
 		// 设置通知栏显示内容
 		notification.icon = R.drawable.ic_launcher;
 		notification.tickerText = "开始下载";

@@ -20,7 +20,7 @@
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Light.NoTitleBar" >
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,6 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name="com.zyh.mobilesafe.HomeActivity" >
+        </activity>
+        <activity android:name="com.zyh.mobilesafe.SettingActivity" >
         </activity>
         <service android:name="com.zyh.mobilesafe.services.UpdateService"></service>
     </application>

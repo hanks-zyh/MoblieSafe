@@ -13,8 +13,10 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -37,6 +39,35 @@ public class SplashActivity extends Activity {
 	protected static final int URL_ERROR = 2;
 	protected static final int NETWORK_ERROR = 3;
 	protected static final int JSON_ERROR = 4;
+	private SharedPreferences sp;
+
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_splash);
+		tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
+		tv_splash_version.setText("版本号：" + getAppVersion());
+
+		sp = getSharedPreferences("config", MODE_PRIVATE);
+		boolean autoUpdate = sp.getBoolean("autoUpdate", true);
+		if (autoUpdate) {
+			// 检查版本
+			checkVersion();
+		} else {
+			handler.postDelayed(new Runnable() {
+				@Override
+				public void run() {
+					// 进入主界面
+					enterHome();
+				}
+			}, 2000);
+		}
+		// 进入动画
+		AlphaAnimation animation = new AlphaAnimation(0.0f, 1.0f);
+		animation.setDuration(500);
+		findViewById(R.id.ll_splash_root).startAnimation(animation);
+
+	}
 
 	private Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -49,40 +80,29 @@ public class SplashActivity extends Activity {
 					break;
 				case URL_ERROR:// URL错误
 					enterHome();
-					Toast.makeText(getApplicationContext(), "URL错误", 0).show();
+					Toast.makeText(SplashActivity.this, "URL错误", Toast.LENGTH_SHORT).show();
 					break;
 				case NETWORK_ERROR:// 网络错误
 					enterHome();
-					Toast.makeText(getApplicationContext(), "网络错误", 0).show();
+					Toast.makeText(SplashActivity.this, "网络错误", Toast.LENGTH_SHORT).show();
 					break;
 				case JSON_ERROR:// 网络错误
 					enterHome();
-					Toast.makeText(getApplicationContext(), "Json错误", 0).show();
+					Toast.makeText(SplashActivity.this, "Json错误", Toast.LENGTH_SHORT).show();
 					break;
 			}
 		}
-
 	};
-
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
-		tv_splash_version.setText("版本号：" + getAppVersion());
-
-		// 检查版本
-		checkVersion();
-
-		// 进入动画
-		AlphaAnimation animation = new AlphaAnimation(0.0f, 1.0f);
-		animation.setDuration(1500);
-		findViewById(R.id.ll_splash_root).startAnimation(animation);
-
-	}
 
 	private void showUpdateDialog() {
 		AlertDialog.Builder builder = new Builder(this);
+		// builder.setCancelable(false);//不让点击返回
+		builder.setOnCancelListener(new OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				enterHome();
+			}
+		});
 		builder.setTitle("版本升级");
 		builder.setMessage(description);
 		builder.setNegativeButton("立刻升级", new OnClickListener() {
