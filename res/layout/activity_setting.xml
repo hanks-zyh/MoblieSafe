@@ -9,7 +9,7 @@
         android:id="@+id/textView1"
         android:layout_width="fill_parent"
         android:layout_height="55dip"
-        android:background="#8866ff00"
+        android:background="@color/home_title_bg"
         android:gravity="center"
         android:text="设置中心"
         android:textColor="#000000"

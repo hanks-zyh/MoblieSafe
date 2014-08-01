@@ -9,8 +9,8 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -19,19 +19,24 @@
         android:theme="@style/AppTheme" >
         <activity
             android:name=".SplashActivity"
-            android:label="@string/app_name"
-             >
+            android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.zyh.mobilesafe.HomeActivity" >
-        </activity>
-        <activity android:name="com.zyh.mobilesafe.SettingActivity" >
-        </activity>
-        <service android:name="com.zyh.mobilesafe.services.UpdateService"></service>
+        <activity android:name="com.zyh.mobilesafe.HomeActivity" />
+        <activity android:name="com.zyh.mobilesafe.LostFindActivity" />
+        <activity android:name="com.zyh.mobilesafe.SettingActivity" />
+        <activity android:name="com.zyh.mobilesafe.Setup1Activity" />
+        <activity android:name="com.zyh.mobilesafe.Setup2Activity" />
+        <activity android:name="com.zyh.mobilesafe.Setup3Activity" />
+        <activity android:name="com.zyh.mobilesafe.Setup4Activity" />
+        <activity android:name="com.zyh.mobilesafe.BaseSetupActivity" />
+
+        <service android:name="com.zyh.mobilesafe.services.UpdateService" >
+        </service>
     </application>
 
 </manifest>

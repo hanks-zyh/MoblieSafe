@@ -108,6 +108,9 @@ public class HomeActivity extends Activity {
 					editor.putString("password", MD5Utils.getMd5String(password));
 					editor.commit();
 					dialog.dismiss();
+
+					startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
+					HomeActivity.this.finish();
 				} else {
 					et_setup_confirm.setText("");
 					Toast.makeText(HomeActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
@@ -152,6 +155,8 @@ public class HomeActivity extends Activity {
 				if (savepassword.equals(MD5Utils.getMd5String(password))) {
 					// 一致，取消对话框 ，进入手机防盗界面
 					dialog.dismiss();
+					startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
+					HomeActivity.this.finish();
 				} else {
 					et_setup_pwd.setText("");
 					Toast.makeText(HomeActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
@@ -174,6 +179,12 @@ public class HomeActivity extends Activity {
 		return !TextUtils.isEmpty(password);
 	}
 
+	/**
+	 * GridView 的适配器
+	 * 
+	 * @author zyh
+	 * 
+	 */
 	class Myadpater extends BaseAdapter {
 
 		@Override
