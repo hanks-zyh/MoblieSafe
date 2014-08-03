@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zyh="http://schemas.android.com/apk/res/com.zyh.mobilesafe"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/home_title_height"
+        android:background="@color/home_title_bg"
+        android:gravity="center"
+        android:text="2.手机卡绑定"
+        android:textColor="#000000"
+        android:textSize="22sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dip"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_online" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/presence_invisible" />
+    </LinearLayout>
+
+    <TextView
+        style="@style/text_content_style"
+        android:text="通过绑定sim卡：" />
+
+    <TextView
+        style="@style/text_content_style"
+        android:text="下次重启手机如果发现sim卡变化\n就会发送报警短信" />
+
+    <com.zyh.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_setup2_sim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dip"
+        zyh:desc_off="sim卡没有绑定"
+        zyh:desc_on="sim卡已绑定"
+        zyh:title="点击绑定sim卡" >
+    </com.zyh.mobilesafe.ui.SettingItemView>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:padding="@dimen/setup_button_padding" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/bind" />
+
+        <Button
+            style="@style/button_pre_style"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="上一步" />
+
+        <Button
+            style="@style/button_next_style"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="下一步" />
+    </RelativeLayout>
+
+</LinearLayout>

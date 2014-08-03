@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="55dip"
+    android:orientation="vertical"
+    android:padding="5dip" >
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text="姓名"
+        android:textColor="#0000ff"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tv_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@android:drawable/ic_menu_call"
+        android:ellipsize="marquee"
+        android:gravity="center_vertical"
+        android:singleLine="true"
+        android:text="13424242424"
+        android:textColor="#88000000"
+        android:textSize="16sp" />
+
+</LinearLayout>

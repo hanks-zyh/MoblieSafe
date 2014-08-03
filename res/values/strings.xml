@@ -4,5 +4,7 @@
     <string name="app_name">安全卫士</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="sample_device_admin_description">安全卫士</string>
+    <string name="sample_device_admin">安全卫士</string>
 
 </resources>
