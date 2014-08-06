@@ -5,22 +5,17 @@
     android:orientation="vertical" >
 
     <TextView
-        android:layout_width="fill_parent"
-        android:layout_height="50dip"
-        android:background="@color/home_title_bg"
-        android:gravity="center"
-        android:text="安全卫士"
-        android:textColor="#000000"
-        android:textSize="22sp" />
+        style="@style/text_home_title_style"
+        android:text="安全卫士" />
 
     <com.zyh.mobilesafe.ui.FocusedTextView
-        android:focusableInTouchMode="true"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:ellipsize="marquee"
-        android:singleLine="true"
+        android:focusableInTouchMode="true"
         android:gravity="center"
-        android:text="我是黑马小护卫。我时刻保护您的移动手机安全。不拉不拉。。嘎嘎。。"
+        android:singleLine="true"
+        android:text="我是安全小卫士。我时刻保护您的移动手机安全。不拉不拉。。嘎嘎。。"
         android:textColor="#006600"
         android:textSize="22sp" />
 

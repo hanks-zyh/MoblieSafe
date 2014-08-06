@@ -6,22 +6,40 @@
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="55dip"
-        android:background="@color/home_title_bg"
-        android:gravity="center"
-        android:text="设置中心"
-        android:textColor="#000000"
-        android:textSize="22sp" />
+        style="@style/text_home_title_style"
+        android:text="设置中心" />
 
     <com.zyh.mobilesafe.ui.SettingItemView
-        zyh:title = "设置自动更新"
-        zyh:desc_on = "自动更新已开启"
-        zyh:desc_off = "自动更新已关闭"
         android:id="@+id/siv_update"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        zyh:desc_off="自动更新已关闭"
+        zyh:desc_on="自动更新已开启"
+        zyh:title="自动更新" >
     </com.zyh.mobilesafe.ui.SettingItemView>
+
+    <com.zyh.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_show_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        zyh:desc_off="关闭号码归属地显示"
+        zyh:desc_on="开启号码归属地显示"
+        zyh:title="显示号码归属地" >
+    </com.zyh.mobilesafe.ui.SettingItemView>
+
+    <com.zyh.mobilesafe.ui.SettingClickView
+        android:id="@+id/scv_address_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+    </com.zyh.mobilesafe.ui.SettingClickView>
+    <com.zyh.mobilesafe.ui.SettingItemView
+        android:id="@+id/siv_callsms_safe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        zyh:desc_off="黑名单拦截已关闭"
+        zyh:desc_on="黑名单拦截已开启"
+        zyh:title="黑名单拦截设置" >
+    </com.zyh.mobilesafe.ui.SettingItemView>
+    
 
 </LinearLayout>

@@ -1,22 +1,18 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_splash_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/logo"
-    android:gravity="center_horizontal"
-    android:id="@+id/ll_splash_root"
-    android:orientation="vertical" >
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="30dip"
-        android:layout_marginTop="320dip" />
+    android:gravity="center_horizontal" >
 
     <TextView
         android:id="@+id/tv_splash_version"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dip"
         android:shadowColor="#ff0000"
         android:shadowDx="0.4"
         android:shadowDy="0.4"
@@ -25,4 +21,11 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
-</LinearLayout>
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_splash_version"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dip" />
+
+</RelativeLayout>
