@@ -8,23 +8,31 @@
         android:minSdkVersion="14"
         android:targetSdkVersion="19" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.READ_CONTACTS"/>
-    <uses-permission android:name="android.permission.READ_SMS"/>
-    <uses-permission android:name="android.permission.SEND_SMS"/>
-    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.zyh.mobilesafe" />
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
         <activity
             android:name=".SplashActivity"
             android:label="@string/app_name" >
@@ -43,9 +51,14 @@
         <activity android:name="com.zyh.mobilesafe.Setup4Activity" />
         <activity android:name="com.zyh.mobilesafe.BaseSetupActivity" />
         <activity android:name="com.zyh.mobilesafe.SelectContactActivity" />
+        <activity android:name="com.zyh.mobilesafe.AtoolsActivity" />
+        <activity android:name="com.zyh.mobilesafe.NumberAddressQueryActivity" />
+        <activity android:name="com.zyh.mobilesafe.CallSmsSafeActivity" />
 
         <service android:name="com.zyh.mobilesafe.services.UpdateService" />
         <service android:name="com.zyh.mobilesafe.services.GPSService" />
+        <service android:name="com.zyh.mobilesafe.services.AddressService" />
+        <service android:name="com.zyh.mobilesafe.services.CallSmsSafeService" />
 
         <receiver android:name="com.zyh.mobilesafe.receiver.BootCompleteReceiver" >
             <intent-filter>
@@ -53,11 +66,11 @@
             </intent-filter>
         </receiver>
         <receiver android:name="com.zyh.mobilesafe.receiver.SMSReceiver" >
-            <intent-filter android:priority="1000">
+            <intent-filter android:priority="1000" >
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
-         <receiver
+        <receiver
             android:name="com.zyh.mobilesafe.receiver.MyAdmin"
             android:description="@string/sample_device_admin_description"
             android:label="@string/sample_device_admin"

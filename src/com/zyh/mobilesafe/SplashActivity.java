@@ -1,5 +1,7 @@
 package com.zyh.mobilesafe;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
@@ -48,6 +50,9 @@ public class SplashActivity extends Activity {
 		tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
 		tv_splash_version.setText("版本号：" + getAppVersion());
 
+		// 拷贝数据库
+		copyDB();
+
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		boolean autoUpdate = sp.getBoolean("autoUpdate", true);
 		if (autoUpdate) {
@@ -67,6 +72,32 @@ public class SplashActivity extends Activity {
 		animation.setDuration(500);
 		findViewById(R.id.ll_splash_root).startAnimation(animation);
 
+	}
+
+	/**
+	 * 把address.db这个数据库拷贝到 data/data/com.zyh.mobilesafe/files/address.db
+	 */
+	private void copyDB() {
+
+		// 已经拷贝了，不再拷贝
+		try {
+			File file = new File(getFilesDir(), "address.db");
+			if (file.exists() && file.length() > 0) return; // 正常，不再拷贝
+
+			InputStream is = getAssets().open("address.db");
+			FileOutputStream fos = new FileOutputStream(file);
+			byte[] buffer = new byte[1024];
+			int len = 0;
+			while ((len = is.read(buffer)) != -1) {
+				fos.write(buffer, 0, len);
+			}
+			fos.close();
+			is.close();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private Handler handler = new Handler() {
@@ -151,7 +182,7 @@ public class SplashActivity extends Activity {
 					HttpURLConnection conn;
 					conn = (HttpURLConnection) url.openConnection();
 					conn.setRequestMethod("GET");
-					conn.setConnectTimeout(5000);
+					conn.setConnectTimeout(3000);
 					if (conn.getResponseCode() == 200) {
 						InputStream is = conn.getInputStream();
 						String result = StreamTool.readFromStream(is);

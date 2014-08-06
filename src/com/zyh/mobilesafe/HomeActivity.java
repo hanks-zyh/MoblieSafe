@@ -46,6 +46,12 @@ public class HomeActivity extends Activity {
 					case 0:// 进入手机防盗
 						showLostDialog();
 						break;
+					case 1:// 进入通讯卫士
+						startActivity(new Intent(HomeActivity.this, CallSmsSafeActivity.class));
+						break;
+					case 7:// 进入高级工具
+						startActivity(new Intent(HomeActivity.this, AtoolsActivity.class));
+						break;
 					case 8:// 进入设置中心
 						startActivity(new Intent(HomeActivity.this, SettingActivity.class));
 						break;
@@ -110,7 +116,6 @@ public class HomeActivity extends Activity {
 					dialog.dismiss();
 
 					startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
-					HomeActivity.this.finish();
 				} else {
 					et_setup_confirm.setText("");
 					Toast.makeText(HomeActivity.this, "两次密码不一致", Toast.LENGTH_SHORT).show();
@@ -156,7 +161,6 @@ public class HomeActivity extends Activity {
 					// 一致，取消对话框 ，进入手机防盗界面
 					dialog.dismiss();
 					startActivity(new Intent(HomeActivity.this, LostFindActivity.class));
-					HomeActivity.this.finish();
 				} else {
 					et_setup_pwd.setText("");
 					Toast.makeText(HomeActivity.this, "密码错误", Toast.LENGTH_SHORT).show();
@@ -194,7 +198,7 @@ public class HomeActivity extends Activity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-			View view = View.inflate(HomeActivity.this, R.layout.list_home_item, null);
+			View view = View.inflate(HomeActivity.this, R.layout.list_item_home, null);
 			ImageView imageView = (ImageView) view.findViewById(R.id.iv_home_item);
 			TextView textView = (TextView) view.findViewById(R.id.tv_home_item);
 			textView.setText(names[position]);

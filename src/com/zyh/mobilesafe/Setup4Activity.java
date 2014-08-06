@@ -79,8 +79,8 @@ public class Setup4Activity extends BaseSetupActivity {
 	}
 
 	@Override
-	protected void onStart() {
-		super.onStart();
+	protected void onResume() {
+		super.onResume();
 		System.out.println("-------------onstart");
 		sp = getSharedPreferences("config", MODE_PRIVATE);
 		boolean protecting = sp.getBoolean("protecting", false);

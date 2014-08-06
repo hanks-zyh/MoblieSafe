@@ -26,11 +26,11 @@ public class SettingItemView extends RelativeLayout {
 	private void initView(Context context) {
 
 		// 把一个布局文件 view 加载到SettingItemView中
-		View.inflate(context, R.layout.settin_item_view, this);
+		View.inflate(context, R.layout.setting_item_view, this);
 		cb_status = (CheckBox) findViewById(R.id.cb_status);
 		tv_title = (TextView) findViewById(R.id.tv_title);
 		tv_desc = (TextView) findViewById(R.id.tv_desc);
-
+		setDesc(desc_off);
 	}
 
 	/**
