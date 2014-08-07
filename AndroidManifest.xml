@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zyh.mobilesafe"
-    android:versionCode="2"
-    android:versionName="2.0" >
+    android:versionCode="1"
+    android:versionName="1.0" >
 
     <uses-sdk
         android:minSdkVersion="14"
@@ -58,6 +58,7 @@
         <activity android:name="com.zyh.mobilesafe.AtoolsActivity" />
         <activity android:name="com.zyh.mobilesafe.NumberAddressQueryActivity" />
         <activity android:name="com.zyh.mobilesafe.CallSmsSafeActivity" />
+        <activity android:name="com.zyh.mobilesafe.AppManagerActivity" />
 
         <service android:name="com.zyh.mobilesafe.services.UpdateService" />
         <service android:name="com.zyh.mobilesafe.services.GPSService" />
