@@ -22,6 +22,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -49,11 +50,12 @@ public class SplashActivity extends Activity {
 		setContentView(R.layout.activity_splash);
 		tv_splash_version = (TextView) findViewById(R.id.tv_splash_version);
 		tv_splash_version.setText("版本号：" + getAppVersion());
-
+		sp = getSharedPreferences("config", MODE_PRIVATE);
+		// 创建桌面图标
+		installShortCut();
 		// 拷贝数据库
 		copyDB();
 
-		sp = getSharedPreferences("config", MODE_PRIVATE);
 		boolean autoUpdate = sp.getBoolean("autoUpdate", true);
 		if (autoUpdate) {
 			// 检查版本
@@ -72,6 +74,34 @@ public class SplashActivity extends Activity {
 		animation.setDuration(500);
 		findViewById(R.id.ll_splash_root).startAnimation(animation);
 
+	}
+
+	/**
+	 * 创建桌面快捷图标
+	 */
+	private void installShortCut() {
+
+		boolean hasShrotcut = sp.getBoolean("shortcut", false);
+		if (hasShrotcut) return;
+
+		// 发送广播意图，告诉桌面要创建快捷图标
+		Intent intent = new Intent();
+		intent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+
+		// 快捷方式包含3个信息 1.名称2.图标 3.意图
+		intent.putExtra(Intent.EXTRA_SHORTCUT_ICON, BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher));
+		intent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "安全卫士");
+
+		// 桌面图标点击意图
+		Intent shortcutIntent = new Intent();
+		shortcutIntent.setAction("android.intent.action.MAIN");
+		shortcutIntent.addCategory("android.intent.category.LAUNCHER");
+		shortcutIntent.setClassName(getPackageName(), "com.zyh.mobilesafe.SplashActivity");
+
+		intent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
+		sendBroadcast(intent);
+		Toast.makeText(this, "创建快捷方式：安全卫士", Toast.LENGTH_SHORT).show();
+		sp.edit().putBoolean("shortcut", true).commit();
 	}
 
 	/**

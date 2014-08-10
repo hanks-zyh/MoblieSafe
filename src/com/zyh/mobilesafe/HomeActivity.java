@@ -52,6 +52,9 @@ public class HomeActivity extends Activity {
 					case 2:// 进入应用管理
 						startActivity(new Intent(HomeActivity.this, AppManagerActivity.class));
 						break;
+					case 3:// 进入进程管理
+						startActivity(new Intent(HomeActivity.this, TaskManagerActivity.class));
+						break;
 					case 7:// 进入高级工具
 						startActivity(new Intent(HomeActivity.this, AtoolsActivity.class));
 						break;
