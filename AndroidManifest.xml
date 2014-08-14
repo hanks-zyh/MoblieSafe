@@ -68,6 +68,7 @@
         <service android:name="com.zyh.mobilesafe.services.GPSService" />
         <service android:name="com.zyh.mobilesafe.services.AddressService" />
         <service android:name="com.zyh.mobilesafe.services.CallSmsSafeService" />
+        <service android:name="com.zyh.mobilesafe.services.AutoClearService" />
 
         <receiver android:name="com.zyh.mobilesafe.receiver.BootCompleteReceiver" >
             <intent-filter>
