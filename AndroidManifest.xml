@@ -30,7 +30,8 @@
     <instrumentation
         android:name="android.test.InstrumentationTestRunner"
         android:targetPackage="com.zyh.mobilesafe" />
-    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
+
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
 
     <application
         android:allowBackup="true"
@@ -63,6 +64,8 @@
         <activity android:name="com.zyh.mobilesafe.AppManagerActivity" />
         <activity android:name="com.zyh.mobilesafe.TaskManagerActivity" />
         <activity android:name="com.zyh.mobilesafe.TaskSettingActivity" />
+        <activity android:name="com.zyh.mobilesafe.CleanCacheActivity" />
+        <activity android:name="com.zyh.mobilesafe.TrafficManagerActivity" />
 
         <service android:name="com.zyh.mobilesafe.services.UpdateService" />
         <service android:name="com.zyh.mobilesafe.services.GPSService" />
@@ -92,6 +95,15 @@
             <intent-filter>
                 <action android:name="android.app.action.DEVICE_ADMIN_ENABLED" />
             </intent-filter>
+        </receiver>
+        <receiver android:name="com.zyh.mobilesafe.receiver.MyWidget" >
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/process_widget_provider" />
         </receiver>
     </application>
 
