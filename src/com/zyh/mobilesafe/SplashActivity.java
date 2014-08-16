@@ -54,7 +54,8 @@ public class SplashActivity extends Activity {
 		// 创建桌面图标
 		installShortCut();
 		// 拷贝数据库
-		copyDB();
+		copyDB("address.db");
+		copyDB("antivirus.db");
 
 		boolean autoUpdate = sp.getBoolean("autoUpdate", true);
 		if (autoUpdate) {
@@ -106,15 +107,16 @@ public class SplashActivity extends Activity {
 
 	/**
 	 * 把address.db这个数据库拷贝到 data/data/com.zyh.mobilesafe/files/address.db
+	 * 
+	 * @param dbname
 	 */
-	private void copyDB() {
+	private void copyDB(String dbname) {
 
 		// 已经拷贝了，不再拷贝
 		try {
-			File file = new File(getFilesDir(), "address.db");
+			File file = new File(getFilesDir(), dbname);
 			if (file.exists() && file.length() > 0) return; // 正常，不再拷贝
-
-			InputStream is = getAssets().open("address.db");
+			InputStream is = getAssets().open(dbname);
 			FileOutputStream fos = new FileOutputStream(file);
 			byte[] buffer = new byte[1024];
 			int len = 0;
@@ -123,9 +125,7 @@ public class SplashActivity extends Activity {
 			}
 			fos.close();
 			is.close();
-
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}

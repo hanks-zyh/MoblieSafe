@@ -58,6 +58,12 @@ public class HomeActivity extends Activity {
 					case 4:// 进入流量统计
 						startActivity(new Intent(HomeActivity.this, TrafficManagerActivity.class));
 						break;
+					case 5:// 进入手机杀毒
+						startActivity(new Intent(HomeActivity.this, AntiVirusActivity.class));
+						break;
+					case 6:// 进入缓存清理
+						startActivity(new Intent(HomeActivity.this, CleanCacheActivity.class));
+						break;
 					case 7:// 进入高级工具
 						startActivity(new Intent(HomeActivity.this, AtoolsActivity.class));
 						break;

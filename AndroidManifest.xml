@@ -24,6 +24,8 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_CALL_LOG" />
+    <uses-permission android:name="android.permission.GET_PACKAGE_SIZE" />
+    <uses-permission android:name="android.permission.CLEAR_APP_CACHE" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
     <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
 
@@ -66,6 +68,7 @@
         <activity android:name="com.zyh.mobilesafe.TaskSettingActivity" />
         <activity android:name="com.zyh.mobilesafe.CleanCacheActivity" />
         <activity android:name="com.zyh.mobilesafe.TrafficManagerActivity" />
+        <activity android:name="com.zyh.mobilesafe.AntiVirusActivity" />
 
         <service android:name="com.zyh.mobilesafe.services.UpdateService" />
         <service android:name="com.zyh.mobilesafe.services.GPSService" />
